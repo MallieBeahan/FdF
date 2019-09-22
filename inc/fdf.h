@@ -6,13 +6,15 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/22 17:52:48 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/22 20:46:22 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 #include "../libft/includes/libft.h"
+#include <stdio.h>
+
 
 # define WIN_H 1080
 # define WIN_W 1920
@@ -21,6 +23,14 @@
 # define BLUE 0x0000FF
 # define PURPLE 0xFF00FF
 # define ORANGE 0x0080FF
+
+typedef struct	s_graph
+{
+	int		xp;
+	int		z;
+	int		z0;
+	int		yp;
+}				t_graph;
 
 typedef struct	s_pixel
 {
@@ -37,6 +47,7 @@ typedef struct	s_data
 	int		width;
 	int		height;
 	int		color;
+	t_graph		**graph;
 
 }				t_data;
 
