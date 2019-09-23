@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:41:55 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/22 15:41:57 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:08:28 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define ARROW_DOWN			125
 # define ARROW_LEFT			123
 # define ARROW_RIGHT		124
+
+# define MAIN_PAD_W         13
+# define MAIN_PAD_A         0
+# define MAIN_PAD_S         1
+# define MAIN_PAD_D         2
 
 # define NUM_PAD_0			82
 # define NUM_PAD_1			83

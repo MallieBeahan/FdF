@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/22 17:41:00 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/23 18:06:34 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fdf.h"
+#include "fdf.h"
 
 static void initialize(t_data *data)
 {
@@ -20,8 +20,8 @@ static void initialize(t_data *data)
         ft_putstr_fd("MLX Error.", 2);
         exit(0);
     }
-    data->size.x = 30;
-    data->size.y = -30;
+    data->scope.x = 30;
+    data->scope.y = -30;
     data->position.x = 400;
     data->position.y = 400;
     data->color = 0xFFFFFF;
@@ -48,5 +48,10 @@ int main (int ac, char **av)
         return (0);
     return (1);
     initialize(data);
-
+    parsing_av(&av[1], data);
+    read_av(&av[1], data);
+    data->window = mlx_new_window(data->mlx, WIN_H, WIN_W, "FDF");
+    if (data->window == (void *)0)
+        return(0); //должен быть вывод ошибки!
+    mlx_key_hook(data->window, add_keys, data);
 }

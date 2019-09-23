@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/22 20:46:22 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:06:16 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define FDF_H
 #include "../libft/includes/libft.h"
 #include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include "mlx.h"
+#include "keycodes.h"
 
 
 # define WIN_H 1080
@@ -24,31 +28,37 @@
 # define PURPLE 0xFF00FF
 # define ORANGE 0x0080FF
 
-typedef struct	s_graph
+typedef struct	s_matrix
 {
-	int		xp;
-	int		z;
-	int		z0;
-	int		yp;
-}				t_graph;
+	int			pos_x;
+	int			z;
+	int			z0;
+	int			pos_y;
+}				t_matrix;
 
 typedef struct	s_pixel
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
 }				t_pixel;
 
 typedef struct	s_data
 {
-	void	*mlx;
-	void	*window;
-	t_pixel	position;
-	t_pixel	scope;
-	int		width;
-	int		height;
-	int		color;
-	t_graph		**graph;
+	void		*mlx;
+	void		*window;
+	t_pixel		position;
+	t_pixel		scope;
+	int			width;
+	int			height;
+	int			color;
+	t_matrix	**matrix;
+	int			small;
+	int			alltitude;
 
 }				t_data;
+
+void    read_av(char *fp, t_data *data);
+void    parsing_av(char *fp, t_data *data);
+int     add_keys(int keycode, t_data *data);
 
 #endif
