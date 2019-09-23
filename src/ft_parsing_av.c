@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_av.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 20:40:19 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 18:17:34 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:56:05 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../inc/fdf.h"
 
 static int     geting_map(char *fp, int flag)
 {

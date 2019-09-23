@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_av.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 15:50:17 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 18:25:15 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:30:55 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../inc/fdf.h"
 
 static void     find_small_matrix(t_data *data, int x, int y, int flag)
 {

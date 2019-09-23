@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/23 18:06:34 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:24:29 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../inc/fdf.h"
 
 static void initialize(t_data *data)
 {
@@ -36,6 +36,11 @@ static int error_checker(int ac, t_data *data)
         return (0);
     }
     return (1);
+}
+
+void			add_pixel(t_data *data, int x, int y, int color)
+{
+	mlx_pixel_put(data->mlx, data->window, data->position.x + x, data->position.y + y, color);
 }
 
 int main (int ac, char **av)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/23 18:24:34 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:15:36 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "mlx.h"
+#include <math.h>
 #include "keycodes.h"
 
 
@@ -53,7 +54,7 @@ typedef struct	s_data
 	int			color;
 	t_matrix	**matrix;
 	int			min_matrix;
-	int			alltitude;
+	int			altitude;
 
 }				t_data;
 

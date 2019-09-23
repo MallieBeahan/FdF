@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "fdf.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "iterator": "c",
+        "string": "c",
+        "vector": "c"
+    }
+}
