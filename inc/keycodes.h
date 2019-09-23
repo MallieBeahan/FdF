@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:41:55 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 18:08:28 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 19:35:47 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define NUM_PAD_9			92
 # define NUM_PAD_PLUS		69
 # define NUM_PAD_MINUS		78
-
+# define MAIN_PAD_C         8
 # define MAIN_PAD_ESC		53
 # define MAIN_PAD_I			34
 # define MAIN_PAD_P			35

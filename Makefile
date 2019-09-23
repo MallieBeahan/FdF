@@ -3,24 +3,32 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+         #
+#    By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 15:25:33 by jjory-ca          #+#    #+#              #
-#    Updated: 2019/09/22 16:14:27 by mbeahan          ###   ########.fr        #
+#    Updated: 2019/09/23 19:51:26 by jjory-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
+ATTACH = -lmlx -framework OpenGL -framework AppKit -L./libft -lft
 
-FLAG = -Wall -Wextra -Werror
-SRC = 
+
+SRC = 	src/add_keys.c\
+		src/axis_proj.c\
+		src/ft_parsing_av.c\
+		src/ft_read_av.c\
+		src/linemarker.c\
+		src/main.c
+
 OBG = $(SRC:.c=.o)
 
 all: $(NAME)
 
+$(NAME):
 		make -C libft/
-		gcc $(FLAG) -I libft/ -c $(SRC)
-		gcc $(FLAG) -o $(NAME) $(OBJ)
+		gcc  -I libft/ -c $(SRC)
+		gcc  -o $(NAME) $(OBJ) $(ATTACH)
 		@echo "\033[1;32mfdf was built\033[0m"
 clean:
 		rm -rf $(OBJ)

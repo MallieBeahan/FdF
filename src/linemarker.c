@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   linemarker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:01:44 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 19:26:56 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/23 19:45:49 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static void		pixel_connect(t_data *data, t_pixel origin, t_pixel target)
+void		pixel_connect(t_data *data, t_pixel origin, t_pixel target)
 {
 	int dx;
 	int dy;

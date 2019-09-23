@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/23 19:32:17 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/23 19:54:40 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ static void initialize(t_data *data)
     data->position.x = 400;
     data->position.y = 400;
     data->color = 0xFFFFFF;
+}
+
+static void		recalc_scale(t_data *e)
+{
+	while (e->scope.x * e->width > WIN_H && e->scope.x > 0)
+		e->scope.x -= 1;
+	while (e->scope.y * e->height < -WIN_W && e->scope.y < 0)
+		e->scope.y += 1;
+	if (ft_abs(e->scope.x) < ft_abs(e->scope.y))
+		e->scope.y = -(e->scope.x);
+	else
+		e->scope.x = -(e->scope.y);
 }
 
 static int error_checker(int ac, t_data *data)
@@ -53,10 +65,13 @@ int main (int ac, char **av)
         return (0);
     return (1);
     initialize(data);
-    parsing_av(&av[1], data);
-    read_av(&av[1], data);
+    parsing_av(av[1], data);
+    read_av(av[1], data);
     data->window = mlx_new_window(data->mlx, WIN_H, WIN_W, "FDF");
     if (data->window == (void *)0)
         return(0); //должен быть вывод ошибки!
+    vector_mark(data);
     mlx_key_hook(data->window, add_keys, data);
+    mlx_mouse_hook(data->window, add_mouse, data);
+    mlx_loop(data->mlx);
 }

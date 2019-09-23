@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_av.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 20:40:19 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 18:56:05 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/23 20:05:44 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static int     geting_map(char *fp, int flag)
+static int     geting_matrix(char *fp, int flag)
 {
     int     fd;
     int     ret;
@@ -20,7 +20,7 @@ static int     geting_map(char *fp, int flag)
 
     ret = 0;
     fd = open(fp, O_RDONLY);
-    if (flag = 1)
+    if (flag == 1)
     {
         while (get_next_line(fd, &ln) > 0)
             ret++;
@@ -40,7 +40,7 @@ static int     geting_map(char *fp, int flag)
     return(ret);
 }
 
-static int  word_counter(const char *ln)
+int  word_counter(const char *ln)
 {
     char    charend;
     int     count;
@@ -49,7 +49,7 @@ static int  word_counter(const char *ln)
 
     i = 0;
     count = 0;
-    line = ft_strlen(line);
+    line = ft_strlen(ln);
     if (line > 0)
         charend = ln[0];
     while (i <= line)
@@ -68,8 +68,8 @@ void    parsing_av(char *fp, t_data *data)
 
     i = 0;
     data->matrix = (t_matrix **)malloc(sizeof(t_matrix *) * data->height);
-    data->height = geting_map(fp, 1);
-    data->width = geting_map(fp, 2);
+    data->height = geting_matrix(fp, 1);
+    data->width = geting_matrix(fp, 2);
     while(i < data->height)
     {
         data->matrix[i] = (t_matrix *)malloc(sizeof(t_matrix) * data->width);

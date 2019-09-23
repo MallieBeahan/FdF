@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 19:32:11 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/23 20:05:59 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int			add_mouse(int num_button, int x, int y, t_data *data)
 		vector_mark(data);
 	}
 	return (MAIN_PAD_C);
-	return (MAIN_PAD_C);
 }
 
 int     add_keys(int num_button, t_data *data)
@@ -55,6 +54,16 @@ int     add_keys(int num_button, t_data *data)
     {
         data->scope.x -= 1;
         data->scope.y += 1;
+    }
+    if (num_button == MAIN_PAD_W)
+	{
+		data->altitude += 1;
+		mapping_height(data, 1);
+    }
+    if (num_button == MAIN_PAD_S)
+	{
+		data->altitude -= 1;
+		mapping_height(data, -1);
     }
     vector_mark(data);
     return(1);

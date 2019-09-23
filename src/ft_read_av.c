@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_av.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 15:50:17 by jjory-ca          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/09/23 18:30:55 by mbeahan          ###   ########.fr       */
-=======
-/*   Updated: 2019/09/23 18:45:05 by jjory-ca         ###   ########.fr       */
->>>>>>> 483b3ce13341d30929030127e1d25f419c62af49
+/*   Updated: 2019/09/23 19:56:22 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +18,7 @@ static void     find_min_matrix(t_data *data, int x, int y, int flag)
 
     if (flag == 0){
         module = ft_abs(data->matrix[x][y].z);
-        if (!data->min_matrix && module != 0 || (data->min_matrix > module && module != 0))
+        if (!(data->min_matrix && module != 0) || (data->min_matrix > module && module != 0))
             data->min_matrix = module;
     }
     else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 15:49:56 by rymuller          #+#    #+#             */
-/*   Updated: 2019/07/12 15:20:44 by rymuller         ###   ########.fr       */
+/*   Updated: 2019/09/23 20:03:17 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_gnl
 	struct s_gnl	*next;
 }					t_gnl;
 
+unsigned int		ft_abs(int nb);
 char				*ft_itoa(int n);
 void				ft_putnbr(int n);
 int					ft_tolower(int c);
