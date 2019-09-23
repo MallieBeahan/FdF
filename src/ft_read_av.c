@@ -6,13 +6,17 @@
 /*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 15:50:17 by jjory-ca          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/09/23 18:30:55 by mbeahan          ###   ########.fr       */
+=======
+/*   Updated: 2019/09/23 18:45:05 by jjory-ca         ###   ########.fr       */
+>>>>>>> 483b3ce13341d30929030127e1d25f419c62af49
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static void     find_small_matrix(t_data *data, int x, int y, int flag)
+static void     find_min_matrix(t_data *data, int x, int y, int flag)
 {
     size_t  module;
 
@@ -54,7 +58,7 @@ void    read_av(char *fp, t_data *data)
         while (split != 0)
         {
             data->matrix[x][y].z = ft_atoi(*split);
-            find_small_matrix(data, x, y, 0);
+            find_min_matrix(data, x, y, 0);
             data->matrix[y][x].z0 = data->matrix[y][x].z;
             x++;
             split++;
@@ -63,5 +67,5 @@ void    read_av(char *fp, t_data *data)
         y++;
     }
     close(fd);
-    find_small_matrix(data, 0, 0, 1);
+    find_min_matrix(data, 0, 0, 1);
 }
