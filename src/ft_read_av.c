@@ -6,29 +6,29 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 15:50:17 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 18:12:16 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:25:15 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void     find_small_matrix(t_data *data, int x, int y, int c)
+static void     find_small_matrix(t_data *data, int x, int y, int flag)
 {
-    size_t  tmp;
+    size_t  module;
 
-    if (c == 0){
-        tmp = ft_abs(data->matrix[x][y].z);
-        if (!data->small && tmp != 0 || (data->small > tmp && tmp != 0))
-            data->small = tmp;
+    if (flag == 0){
+        module = ft_abs(data->matrix[x][y].z);
+        if (!data->min_matrix && module != 0 || (data->min_matrix > module && module != 0))
+            data->min_matrix = module;
     }
     else
     {
-        if (!data->small)
-            data->small = 1;
+        if (!data->min_matrix)
+            data->min_matrix = 1;
         while (y < data->height){
             while (x < data->width){
-                data->matrix[y][x].z /= data->small;
-                data->matrix[y][x].z0 /= data->small;
+                data->matrix[y][x].z /= data->min_matrix;
+                data->matrix[y][x].z0 /= data->min_matrix;
                 x++;
             }
             x = 0;

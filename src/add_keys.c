@@ -6,28 +6,28 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 18:03:09 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:20:32 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int     add_keys(int keycode, t_data *data)
+int     add_keys(int num_botton, t_data *data)
 {
-    if (keycode == MAIN_PAD_ESC)
+    if (num_botton == MAIN_PAD_ESC)
         exit(0);
-    if (keycode == ARROW_RIGHT)
+    if (num_botton == ARROW_RIGHT)
         data->position.x += 20;
-    if (keycode == ARROW_LEFT)
+    if (num_botton == ARROW_LEFT)
         data->position.x -= 20;
-    if (keycode == ARROW_DOWN)
+    if (num_botton == ARROW_DOWN)
         data->position.y += 20;
-    if (keycode == ARROW_UP)
+    if (num_botton == ARROW_UP)
         data->position.y -= 20;
-    if (keycode == NUM_PAD_PLUS)
+    if (num_botton == NUM_PAD_PLUS)
         data->scope.x += 1;
         data->scope.y -= 1;
-    if (keycode == NUM_PAD_MINUS)
+    if (num_botton == NUM_PAD_MINUS)
         data->scope.x -= 1;
         data->scope.y += 1;
     //zdes nado risovat || net, hz| need to think

@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/23 18:06:16 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/23 18:24:34 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct	s_data
 	int			height;
 	int			color;
 	t_matrix	**matrix;
-	int			small;
+	int			min_matrix;
 	int			alltitude;
 
 }				t_data;
