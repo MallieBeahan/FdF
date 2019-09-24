@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 19:21:14 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/23 21:01:39 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:49:38 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/fdf.h"
+#include "../inc/fdf.h"
 
 static int mapping_ox(t_data *data, int x, int y)
 {

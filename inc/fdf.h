@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/24 15:37:22 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 19:33:07 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ typedef struct	s_data
 
 }				t_data;
 
-void    		read_av(char *fp, t_data *data);
-void    		parsing_av(char *fp, t_data *data);
+void    		read_av(char *av, t_data *data);
+void    		parsing_av(char *av, t_data *data);
 int     		add_keys(int keycode, t_data *data);
 int     		add_keys(int num_button, t_data *data);
 int				add_mouse(int num_button, int x, int y, t_data *data);
@@ -71,4 +71,5 @@ void			do_mapping(t_data *data);
 void			mapping_height(t_data *data, int flag);
 void			add_pixel(t_data *data, int x, int y, int color);
 int  			word_counter(const char *ln);
+int 			close_window_on_x(int button, void *mlx);
 #endif

@@ -6,20 +6,20 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 20:40:19 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 21:01:21 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:49:42 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/fdf.h"
+#include "../inc/fdf.h"
 
-static int     geting_matrix(char *fp, int flag)
+static int     geting_matrix(char *av, int flag)
 {
     int     fd;
     int     ret;
     char    *ln;
 
     ret = 0;
-    fd = open(fp, O_RDONLY);
+    fd = open(av, O_RDONLY);
     if (flag == 1)
     {
         while (get_next_line(fd, &ln) > 0)
@@ -62,13 +62,13 @@ int  word_counter(const char *ln)
     return(count);
 }
 
-void    parsing_av(char *fp, t_data *data)
+void    parsing_av(char *av, t_data *data)
 {
     int i;
 
     i = 0;
-    data->height = geting_matrix(fp, 1);
-    data->width = geting_matrix(fp, 2);
+    data->height = geting_matrix(av, 1);
+    data->width = geting_matrix(av, 2);
     data->matrix = (t_matrix **)malloc(sizeof(t_matrix *) * data->height);
     while(i < data->height)
     {

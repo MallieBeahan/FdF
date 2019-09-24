@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 15:50:17 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/24 17:55:01 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:49:44 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/fdf.h"
+#include "../inc/fdf.h"
 
 static void     find_min_matrix(t_data *data, int x, int y, int flag)
 {
@@ -40,7 +40,7 @@ static void     find_min_matrix(t_data *data, int x, int y, int flag)
     }
 }
 
-void    read_av(char *fp, t_data *data)
+void    read_av(char *av, t_data *data)
 {
     int fd;
     int x;
@@ -50,13 +50,13 @@ void    read_av(char *fp, t_data *data)
 
     x = 0;
     y = 0;
-    fd = open(fp, O_RDONLY);
+    fd = open(av, O_RDONLY);
     while (get_next_line(fd, &ln) > 0)
     {
         split = ft_strsplit(ln, ' ');
         while (*split != NULL)
         {
-            data->matrix[x][y].z = ft_atoi(*split);
+            data->matrix[y][x].z = ft_atoi(*split);
             find_min_matrix(data, x, y, 0);
             data->matrix[y][x].z0 = data->matrix[y][x].z;
             x++;

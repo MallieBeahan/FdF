@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/24 17:54:06 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:49:51 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/fdf.h"
+#include "../inc/fdf.h"
 
 static void initialize(t_data *data)
 {
@@ -39,7 +39,7 @@ static void		recalc_scale(t_data *e)
 		e->scope.x = -(e->scope.y);
 }
 
-static int error_checker(int ac, t_data *data)
+static int error_checker(int ac)
 {
     if (ac != 2)
     {
@@ -75,13 +75,16 @@ int main (int ac, char **av)
     check_args(ac);
     initialize(data);
     parsing_av(av[1], data);
-   // read_av(av[1], data);
+    read_av(av[1], data);
     recalc_scale(data);
+    if (!error_checker(ac))
+        exit(0);
     data->window = mlx_new_window(data->mlx, WIN_W, WIN_H, "fdf");
     if (data->window == (void *)0)
         exit(0); 
     vector_mark(data);
     mlx_key_hook(data->window, add_keys, data);
     mlx_mouse_hook(data->window, add_mouse, data);
+    mlx_hook(data->window, 17, 0, (void *)close_window_on_x, data);
     mlx_loop(data->mlx);
 }

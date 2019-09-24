@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/24 16:16:42 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:49:33 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/fdf.h"
+#include "../inc/fdf.h"
 
 int			add_mouse(int num_button, int x, int y, t_data *data)
 {
@@ -68,4 +68,12 @@ int     add_keys(int num_button, t_data *data)
     */
     vector_mark(data);
     return(1);
+}
+
+int close_window_on_x(int button, void *mlx)
+{
+    (void)button;   
+    (void)mlx;
+    exit(0);
+    return (0);
 }

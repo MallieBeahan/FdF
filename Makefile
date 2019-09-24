@@ -6,12 +6,12 @@
 #    By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 15:25:33 by jjory-ca          #+#    #+#              #
-#    Updated: 2019/09/24 20:22:37 by jjory-ca         ###   ########.fr        #
+#    Updated: 2019/09/24 21:51:39 by jjory-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-FLAGS = -ggdb
+FLAGS = -ggdb -Wall -Wextra -Werror
 ATTACH = -lmlx -framework OpenGL -framework AppKit -L./libft -lft
 SRC = main.c add_keys.c axis_proj.c ft_parsing_av.c \
 	  ft_read_av.c linemarker.c
@@ -37,13 +37,13 @@ run42:
 	./fdf tests/42.fdf
 	
 clean:
-	@rm -f $(OBJ)
+	@rm -rf $(OBJ)
 	@make -C libft/ clean
 	@echo ""
 	@echo "\x1b[31m > \033[3;36mObjects cleaned\033[0m"
 	@echo ""
 fclean: clean
-	@rm -f $(NAME)
+	@rm -rf $(NAME)
 	@make -C libft/ fclean
 	@echo "\x1b[31m > \033[3;31mProject fully cleaned\033[0m"
 

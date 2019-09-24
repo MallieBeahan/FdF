@@ -6,11 +6,11 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:01:44 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 21:01:28 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 21:49:48 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/fdf.h"
+#include "../inc/fdf.h"
 
 void		pixel_connect(t_data *data, t_pixel origin, t_pixel target)
 {
