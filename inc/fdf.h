@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/23 20:04:52 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 15:37:22 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #include "keycodes.h"
 
 
-# define WIN_H 1080
-# define WIN_W 1920
+# define WIN_H 1000
+# define WIN_W 1000
 # define WHITE 0xFFFFFF
 # define GREEN 0x00FF00
 # define BLUE 0x0000FF
@@ -54,7 +54,7 @@ typedef struct	s_data
 	int			height;
 	int			color;
 	t_matrix	**matrix;
-	int			min_matrix;
+	size_t		min_matrix;
 	int			altitude;
 
 }				t_data;
