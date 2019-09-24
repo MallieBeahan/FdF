@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:41:55 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/23 19:35:47 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/24 22:08:25 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@
 # define MAIN_PAD_MINUS		27
 # define MAIN_PAD_LESS		43
 # define MAIN_PAD_MORE		47
+# define MAIN_PAD_R         15
+# define MAIN_PAD_F         3
 
 #endif
