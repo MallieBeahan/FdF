@@ -6,7 +6,7 @@
 /*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/25 17:50:21 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/25 17:53:34 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int					add_mouse(int num_button, int x, int y, t_data *data)
 			data->color = RED;
 		else
 			data->color = WHITE;
-		vector_mark(data);
 	}
 	return (MOUSE_LEFT_BUTTON);
 }
@@ -65,8 +64,7 @@ static int			add_morekeys(int num_button, t_data *data)
 		else
 			data->color = WHITE;
 	}
-	vector_mark(data);
-	return (and_more(num_button, data));
+	return (1);
 }
 
 int					add_keys(int num_button, t_data *data)
@@ -91,8 +89,10 @@ int					add_keys(int num_button, t_data *data)
 		data->altitude -= 1;
 		mapping_height(data, -1);
 	}
+	add_morekeys(num_button, data);
+	and_more(num_button, data);
 	vector_mark(data);
-	return (add_morekeys(num_button, data));
+	return (1);
 }
 
 void				fdf_free(t_data *data) 
