@@ -6,13 +6,13 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/24 22:16:43 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 15:41:42 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-int			add_mouse(int num_button, int x, int y, t_data *data)
+int					add_mouse(int num_button, int x, int y, t_data *data)
 {
 	if (num_button == MOUSE_LEFT_BUTTON && x && y)
 	{
@@ -33,9 +33,9 @@ int			add_mouse(int num_button, int x, int y, t_data *data)
 	return (MOUSE_LEFT_BUTTON);
 }
 
-static int and_more(int num_button, t_data *data)
+static int			and_more(int num_button, t_data *data)
 {
-	  if (num_button == MAIN_PAD_R)
+	if (num_button == MAIN_PAD_R)
 	{
 		data->altitude += 1;
 		mapping_height(data, 1);
@@ -45,7 +45,7 @@ static int and_more(int num_button, t_data *data)
 		data->scope.x -= 1;
 		data->scope.y += 1;
 	}
-	return (1);
+	return (num_button);
 }
 
 static int			add_morekeys(int num_button, t_data *data)
@@ -68,7 +68,8 @@ static int			add_morekeys(int num_button, t_data *data)
 	vector_mark(data);
 	return (and_more(num_button, data));
 }
-int         add_keys(int num_button, t_data *data)
+
+int					add_keys(int num_button, t_data *data)
 {
 	if (num_button == MAIN_PAD_ESC)
 		exit(0);
@@ -91,12 +92,12 @@ int         add_keys(int num_button, t_data *data)
 		mapping_height(data, -1);
 	}
 	vector_mark(data);
-	return(add_morekeys(num_button, data));
+	return (add_morekeys(num_button, data));
 }
 
-int         close_window_on_x(int button, void *mlx)
+int					close_window_on_x(int button, void *mlx)
 {
-	(void)button;   
+	(void)button;
 	(void)mlx;
 	exit(0);
 	return (0);

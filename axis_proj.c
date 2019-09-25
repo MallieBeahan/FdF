@@ -6,13 +6,13 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 19:21:14 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/24 21:49:38 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 16:25:17 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static int mapping_ox(t_data *data, int x, int y)
+static int			mapping_ox(t_data *data, int x, int y)
 {
 	double bit;
 
@@ -21,7 +21,7 @@ static int mapping_ox(t_data *data, int x, int y)
 	return ((int)bit);
 }
 
-static int	mapping_oy(t_data *data, int x, int y)
+static int			mapping_oy(t_data *data, int x, int y)
 {
 	double bit;
 
@@ -31,7 +31,7 @@ static int	mapping_oy(t_data *data, int x, int y)
 	return ((int)bit);
 }
 
-void		mapping_height(t_data *data, int flag)
+void				mapping_height(t_data *data, int flag)
 {
 	int x;
 	int y;
@@ -45,9 +45,11 @@ void		mapping_height(t_data *data, int flag)
 			if (data->matrix[y][x].z0 != 0)
 			{
 				if (flag == 1)
-					data->matrix[y][x].z = (data->matrix[y][x].z0 * data->altitude);
+					data->matrix[y][x].z = (data->matrix[y][x].z0 *
+					data->altitude);
 				else
-					data->matrix[y][x].z = (data->matrix[y][x].z0 * data->altitude);
+					data->matrix[y][x].z = (data->matrix[y][x].z0 *
+					data->altitude);
 				data->matrix[y][x].pos_x = mapping_ox(data, x, y);
 				data->matrix[y][x].pos_y = mapping_oy(data, x, y);
 			}
@@ -58,7 +60,7 @@ void		mapping_height(t_data *data, int flag)
 	}
 }
 
-void		do_mapping(t_data *data)
+void				do_mapping(t_data *data)
 {
 	int x;
 	int y;

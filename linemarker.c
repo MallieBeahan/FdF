@@ -6,13 +6,13 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:01:44 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/24 21:49:48 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 16:13:24 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void		pixel_connect(t_data *data, t_pixel origin, t_pixel target)
+void			pixel_connect(t_data *data, t_pixel origin, t_pixel target)
 {
 	int dx;
 	int dy;
@@ -80,4 +80,10 @@ void			mark_hill(t_data *data, int x, int y)
 		pixel[1].y = data->matrix[y + 1][x].pos_y;
 		pixel_connect(data, pixel[0], pixel[1]);
 	}
+}
+
+void			add_pixel(t_data *data, int x, int y, int color)
+{
+	mlx_pixel_put(data->mlx, data->window, data->position.x + x, \
+	data->position.y + y, color);
 }

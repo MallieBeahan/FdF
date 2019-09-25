@@ -6,7 +6,7 @@
 #    By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 15:25:33 by jjory-ca          #+#    #+#              #
-#    Updated: 2019/09/24 21:51:39 by jjory-ca         ###   ########.fr        #
+#    Updated: 2019/09/24 21:53:22 by jjory-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,3 +48,6 @@ fclean: clean
 	@echo "\x1b[31m > \033[3;31mProject fully cleaned\033[0m"
 
 re: fclean all
+
+norm:
+	norminette

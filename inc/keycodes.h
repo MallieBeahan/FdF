@@ -6,13 +6,13 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:41:55 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/24 22:08:25 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 16:16:32 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_MACOS_H
+#ifndef KEYCODES_H
 
-# define KEY_MACOS_H
+# define KEYCODES_H
 
 # define MOUSE_LEFT_BUTTON	1
 # define MOUSE_RIGHT_BUTTON	2
