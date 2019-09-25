@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_av.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 20:40:19 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/25 17:12:24 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 21:17:10 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static int			invalid(int reason)
 	return (0);
 }
 
-static int			geting_matrix(char *av, int flag)
+static int			geting_matrix(char *av, int flag, t_data *data)
 {
 	int		fd;
 	int		ret;
 	char	*ln;
 
 	ret = 0;
-	fd = open(av, O_RDONLY);
+	fd = open(av, O_RDONLY) < 0 ? free_fdf(data) : 0;
 	if (flag == 1)
 	{
 		while (get_next_line(fd, &ln) > 0)
@@ -77,8 +77,8 @@ void				parsing_av(char *av, t_data *data)
 	int i;
 
 	i = 0;
-	data->height = geting_matrix(av, 1);
-	data->width = geting_matrix(av, 2);
+	data->height = geting_matrix(av, 1, data);
+	data->width = geting_matrix(av, 2, data);
 	data->matrix = (t_matrix **)malloc(sizeof(t_matrix *) * data->height);
 	while (i < data->height)
 	{
