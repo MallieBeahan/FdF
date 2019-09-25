@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/25 16:19:40 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:36:05 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void				mapping_height(t_data *data, int flag);
 void				add_pixel(t_data *data, int x, int y, int color);
 int					char_counter(const char *ln);
 int					close_window_on_x(int button, void *mlx);
+void				fdf_free(t_data *data);
 
 #endif

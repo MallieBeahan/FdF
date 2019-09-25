@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/25 16:15:30 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:39:22 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		initialize(t_data *data)
 	if ((data->mlx = mlx_init()) == (void *)0)
 	{
 		ft_putstr_fd("MLX Error.", 2);
-		exit(0);
+		fdf_free(data);
 	}
 	data->scope.x = 30;
 	data->scope.y = -30;
@@ -49,13 +49,13 @@ static int		error_checker(int ac)
 	return (1);
 }
 
-void			check_args(int ac)
+void			check_args(int ac, t_data *data)
 {
 	if (ac != 2)
 	{
 		ft_putstr_fd("Error: Тot enough arguments.\n", 2);
 		ft_putstr_fd("Usage: ./fdf file.fdf\n", 2);
-		exit(0);
+		fdf_free(data);
 	}
 }
 
@@ -65,20 +65,20 @@ int				main(int ac, char **av)
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (data == NULL)
-		return (1);
-	check_args(ac);
+		fdf_free(data);
+	check_args(ac, data);
 	initialize(data);
 	parsing_av(av[1], data);
 	read_av(av[1], data);
 	recalc_scale(data);
 	if (!error_checker(ac))
-		exit(0);
+		fdf_free(data);
 	data->window = mlx_new_window(data->mlx, WIN_W, WIN_H, "fdf");
 	if (data->window == (void *)0)
-		exit(0);
+		fdf_free(data);
 	vector_mark(data);
 	mlx_key_hook(data->window, add_keys, data);
 	mlx_mouse_hook(data->window, add_mouse, data);
-	mlx_hook(data->window, 17, 0, (void *)close_window_on_x, data);
+	mlx_hook(data->window, 17, 0, (void *)fdf_free, data);
 	mlx_loop(data->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/25 15:41:42 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:50:21 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int			add_morekeys(int num_button, t_data *data)
 int					add_keys(int num_button, t_data *data)
 {
 	if (num_button == MAIN_PAD_ESC)
-		exit(0);
+		fdf_free(data);
 	if (num_button == ARROW_RIGHT || num_button == MAIN_PAD_D)
 		data->position.x += 30;
 	if (num_button == ARROW_LEFT || num_button == MAIN_PAD_A)
@@ -95,10 +95,19 @@ int					add_keys(int num_button, t_data *data)
 	return (add_morekeys(num_button, data));
 }
 
-int					close_window_on_x(int button, void *mlx)
+void				fdf_free(t_data *data) 
 {
-	(void)button;
-	(void)mlx;
+	int i;
+	
+	i = 0;
+	while(i < data->height)
+	{
+		free(data->matrix[i]);
+		i++;	
+	}
+	if (data->matrix)
+		free(data->matrix);
+	free(data);
+	mlx_destroy_window(data->mlx, data->window);
 	exit(0);
-	return (0);
 }
