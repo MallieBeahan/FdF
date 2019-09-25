@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 20:40:19 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/25 16:10:10 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:12:24 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static int			invalid(int reason)
 		ft_putstr_fd("Invalid map.\n", 2);
 		exit(0);
 	}
-	else
-		return (0);
+	return (0);
 }
 
 static int			geting_matrix(char *av, int flag)

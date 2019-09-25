@@ -6,7 +6,7 @@
 /*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/25 16:15:30 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/25 17:27:41 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ static void		initialize(t_data *data)
 		ft_putstr_fd("MLX Error.", 2);
 		exit(0);
 	}
-	data->scope.x = 30;
-	data->scope.y = -30;
-	data->position.x = 400;
-	data->position.y = 400;
+	data->scope.x = 40;
+	data->scope.y = -40;
+	data->position.x = 500;
+	data->position.y = 500;
 	data->altitude = 1;
 	data->color = WHITE;
 }
 
-static void		recalc_scale(t_data *e)
+static void		reprint_scope(t_data *data)
 {
-	while (e->scope.x * e->width > WIN_H && e->scope.x > 0)
-		e->scope.x -= 1;
-	while (e->scope.y * e->height < -WIN_W && e->scope.y < 0)
-		e->scope.y += 1;
-	if (ft_abs(e->scope.x) < ft_abs(e->scope.y))
-		e->scope.y = -(e->scope.x);
+	while (data->scope.x * data->width > WIN_H && data->scope.x > 0)
+		data->scope.x -= 1;
+	while (data->scope.y * data->height < -WIN_W && data->scope.y < 0)
+		data->scope.y += 1;
+	if (ft_abs(data->scope.x) < ft_abs(data->scope.y))
+		data->scope.y = -(data->scope.x);
 	else
-		e->scope.x = -(e->scope.y);
+		data->scope.x = -(data->scope.y);
 }
 
 static int		error_checker(int ac)
@@ -70,7 +70,7 @@ int				main(int ac, char **av)
 	initialize(data);
 	parsing_av(av[1], data);
 	read_av(av[1], data);
-	recalc_scale(data);
+	reprint_scope(data);
 	if (!error_checker(ac))
 		exit(0);
 	data->window = mlx_new_window(data->mlx, WIN_W, WIN_H, "fdf");
