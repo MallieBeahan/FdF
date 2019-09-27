@@ -6,7 +6,7 @@
 #    By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/22 15:25:33 by jjory-ca          #+#    #+#              #
-#    Updated: 2019/09/24 21:53:22 by jjory-ca         ###   ########.fr        #
+#    Updated: 2019/09/25 21:39:02 by jjory-ca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fdf
 FLAGS = -ggdb -Wall -Wextra -Werror
 ATTACH = -lmlx -framework OpenGL -framework AppKit -L./libft -lft
 SRC = main.c add_keys.c axis_proj.c ft_parsing_av.c \
-	  ft_read_av.c linemarker.c
+	  ft_read_av.c linemarker.c main_menu.c
 OBJ = $(subst .c,.o,$(SRC))
 all: $(NAME)
 

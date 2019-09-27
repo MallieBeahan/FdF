@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/25 21:14:31 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/27 17:16:47 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int				main(int ac, char **av)
 		fdf_free(data);
 	vector_mark(data);
 	mlx_key_hook(data->window, add_keys, data);
-	mlx_mouse_hook(data->window, add_mouse, data);
 	mlx_hook(data->window, 17, 0, (void *)fdf_free, data);
+	print_menu(data);
 	mlx_loop(data->mlx);
+	print_menu(data);
 }

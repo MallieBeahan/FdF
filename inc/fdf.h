@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/25 17:36:05 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/27 17:19:02 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <math.h>
 # include "keycodes.h"
 
+
+# define TEXT_COLOR 0xFFFFFF
 # define WIN_H 1000
 # define WIN_W 1000
 # define WHITE 0xFFFFFF
@@ -62,7 +64,6 @@ void				read_av(char *av, t_data *data);
 void				parsing_av(char *av, t_data *data);
 int					add_keys(int keycode, t_data *data);
 int					add_keys(int num_button, t_data *data);
-int					add_mouse(int num_button, int x, int y, t_data *data);
 void				mark_hill(t_data *data, int x, int y);
 void				vector_mark(t_data *data);
 void				pixel_connect(t_data *data, t_pixel origin, t_pixel target);
@@ -72,5 +73,5 @@ void				add_pixel(t_data *data, int x, int y, int color);
 int					char_counter(const char *ln);
 int					close_window_on_x(int button, void *mlx);
 void				fdf_free(t_data *data);
-
+void				print_menu(t_data *data);
 #endif

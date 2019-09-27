@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   add_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/25 17:53:34 by mbeahan          ###   ########.fr       */
+/*   Updated: 2019/09/27 17:17:27 by jjory-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-int					add_mouse(int num_button, int x, int y, t_data *data)
-{
-	if (num_button == MOUSE_LEFT_BUTTON && x && y)
-	{
-		if (data->color == WHITE)
-			data->color = GREEN;
-		else if (data->color == GREEN)
-			data->color = BLUE;
-		else if (data->color == BLUE)
-			data->color = PURPLE;
-		else if (data->color == PURPLE)
-			data->color = ORANGE;
-		else if (data->color == ORANGE)
-			data->color = RED;
-		else
-			data->color = WHITE;
-	}
-	return (MOUSE_LEFT_BUTTON);
-}
 
 static int			and_more(int num_button, t_data *data)
 {
@@ -91,11 +71,12 @@ int					add_keys(int num_button, t_data *data)
 	}
 	add_morekeys(num_button, data);
 	and_more(num_button, data);
+	print_menu(data);
 	vector_mark(data);
 	return (1);
 }
 
-void				fdf_free(t_data *data) 
+void				fdf_free(t_data *data)
 {
 	int i;
 	
