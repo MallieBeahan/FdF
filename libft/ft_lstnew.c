@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 11:15:00 by rymuller          #+#    #+#             */
-/*   Updated: 2018/11/28 11:45:35 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/14 14:50:14 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/18 16:42:44 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*elem;
+	t_list *new_list;
 
-	if (!(elem = (t_list *)malloc(sizeof(t_list))))
+	new_list = (t_list *)malloc(sizeof(content) * content_size);
+	if (new_list == NULL)
 		return (NULL);
-	if (content != NULL)
+	if (content == NULL)
 	{
-		if (!(elem->content = malloc(content_size)))
-		{
-			free(elem);
-			return (NULL);
-		}
-		ft_memcpy(elem->content, content, content_size);
-		elem->content_size = content_size;
+		new_list->content = NULL;
+		new_list->content_size = 0;
 	}
 	else
 	{
-		elem->content = NULL;
-		elem->content_size = 0;
+		new_list->content = (void *)malloc(sizeof(void) * content_size);
+		if (new_list->content == NULL)
+		{
+			free(new_list);
+			return (NULL);
+		}
+		new_list->content = ft_memcpy(new_list->content, content, content_size);
+		new_list->content_size = content_size;
 	}
-	elem->next = NULL;
-	return (elem);
+	new_list->next = NULL;
+	return (new_list);
 }

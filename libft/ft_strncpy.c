@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:32:49 by rymuller          #+#    #+#             */
-/*   Updated: 2018/11/22 20:41:00 by rymuller         ###   ########.fr       */
+/*   Created: 2018/11/27 12:48:16 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/11 19:06:43 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	size_t	i;
+	int		i;
+	int		src_len;
+	size_t	c;
 
+	src_len = ft_strlen((char *)src);
+	c = 0;
 	i = 0;
-	while (src[i] && i < len)
+	while (src[i] != '\0' && c < n)
 	{
-		dst[i] = src[i];
+		dest[i] = src[i];
 		i++;
+		c++;
 	}
-	while (i < len)
+	if ((size_t)src_len < n)
 	{
-		dst[i] = '\0';
-		i++;
+		while ((size_t)i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
 	}
-	return (dst);
+	return (dest);
 }

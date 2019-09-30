@@ -3,87 +3,124 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 15:39:38 by rymuller          #+#    #+#             */
-/*   Updated: 2018/11/30 21:36:20 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/12 18:00:52 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/18 16:48:17 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	words_num(const char *s, char c)
+static int	count_words(char const *s, char c)
 {
-	size_t		i;
-	size_t		words_num;
+	int		i;
+	int		count;
 
+	count = 0;
 	i = 0;
-	words_num = 0;
-	while (s[i])
+	if (s)
 	{
-		if (s[i] != c)
-			if (s[i + 1] == c || s[i + 1] == '\0')
-				words_num++;
-		i++;
-	}
-	return (words_num);
-}
-
-static size_t	word_len(const char *s, char c)
-{
-	size_t	i;
-
-	if (s != NULL)
-	{
-		i = 0;
-		while (s[i] != c && s[i] != '\0')
+		while (s[i])
+		{
+			if (s[i] == c && (s[i + 1] != c && s[i + 1] != '\0'))
+				count++;
 			i++;
-		return (i);
+		}
+		if (s[0] != c)
+			count += 1;
+		return (count);
 	}
 	return (0);
 }
 
-static char		**ft_words(char const *s, char **words, char c, size_t len)
+static int	symbs_count(char const *s, char c, int i)
 {
-	size_t		i;
-	size_t		j;
-	size_t		k;
+	int count;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (i < len)
+	count = 0;
+	if (s)
 	{
-		while (s[k] == c)
-			k++;
-		if (!(words[i] =
-					(char *)malloc(sizeof(char) * (word_len(&s[k], c) + 1))))
+		while (s[i] != '\0' && s[i] != c)
 		{
-			while (i != 0)
-				free(words[--i]);
-			free(words);
-			return (NULL);
+			count++;
+			i++;
 		}
-		while (s[k] != c && s[k] != '\0')
-			words[i][j++] = s[k++];
-		words[i++][j] = '\0';
-		j = 0;
+		return (count);
 	}
-	return (words);
+	return (0);
 }
 
-char			**ft_strsplit(char const *s, char c)
+static char	*add_string(char const *s, char c, int i)
 {
-	size_t		len;
-	char		**words;
+	int		word_len;
+	char	*str;
+	int		j;
 
-	if (s != NULL)
+	j = 0;
+	word_len = symbs_count(s, c, i);
+	str = (char *)malloc(sizeof(char) * (word_len + 1));
+	if (s && str)
 	{
-		len = words_num(s, c);
-		if (!(words = (char **)malloc(sizeof(char *) * (len + 1))))
-			return (NULL);
-		words[len] = NULL;
-		return (ft_words(s, words, c, len));
+		while (s[i] != '\0' && s[i] != c)
+		{
+			str[j] = s[i];
+			j++;
+			i++;
+		}
+		str[j] = '\0';
+		return (str);
+	}
+	return (0);
+}
+
+static char	**ft_while(char const *s, char **str, char c, int i)
+{
+	int j;
+
+	j = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			str[j] = add_string(s, c, i);
+			if (!str[j])
+			{
+				while (j >= 0)
+				{
+					free(str[j]);
+					--j;
+				}
+				return (str);
+			}
+			j++;
+			i = symbs_count(s, c, i) + i;
+		}
+		if (s[i])
+			i++;
+	}
+	return (str);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**str;
+	int		i;
+	int		words;
+
+	words = count_words(s, c);
+	i = 0;
+	str = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!(str = (char **)malloc(sizeof(char *) * (words + 1))))
+	{
+		free(str);
+		return (NULL);
+	}
+	str[words] = NULL;
+	if (s && c)
+	{
+		str = ft_while(s, str, c, i);
+		return (str);
 	}
 	return (NULL);
 }

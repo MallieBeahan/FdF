@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 13:51:53 by rymuller          #+#    #+#             */
-/*   Updated: 2018/12/07 21:35:19 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/05 15:03:35 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/05 16:44:09 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
+	char	*str;
 	size_t	i;
-	char	*mal;
 
-	if (s != NULL)
+	i = 0;
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (str && s)
 	{
-		if (!(mal = (char *)malloc(len + 1)))
-			return (NULL);
-		i = 0;
-		while (i < len)
+		while (i < len && s[i] != '\0')
 		{
-			mal[i] = s[start + i];
+			str[i] = s[start];
 			i++;
+			start++;
 		}
-		mal[i] = '\0';
-		return (mal);
+		str[i] = '\0';
+		return (str);
 	}
 	return (NULL);
 }

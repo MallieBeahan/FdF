@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:20:07 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/27 17:19:02 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/30 18:42:16 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "../libft/includes/libft.h"
+# include "../libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "mlx.h"
 # include <math.h>
 # include "keycodes.h"
-
-
 # define TEXT_COLOR 0xFFFFFF
 # define WIN_H 1000
 # define WIN_W 1000

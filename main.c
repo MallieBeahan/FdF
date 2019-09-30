@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 15:19:02 by mbeahan           #+#    #+#             */
-/*   Updated: 2019/09/27 17:16:47 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/30 18:07:14 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 static void		initialize(t_data *data)
 {
-	if ((data->mlx = mlx_init()) == (void *)0)
-	{
-		ft_putstr_fd("MLX Error.", 2);
-		fdf_free(data);
-	}
+	data->height = 0;
+	data->width = 0;
 	data->scope.x = 40;
 	data->scope.y = -40;
 	data->position.x = 500;
 	data->position.y = 500;
 	data->altitude = 1;
 	data->color = WHITE;
+	if ((data->mlx = mlx_init()) == (void *)0)
+	{
+		ft_putstr_fd("MLX Error.", 2);
+		fdf_free(data);
+	}
 }
 
 static void		reprint_scope(t_data *data)
@@ -49,13 +51,27 @@ static int		error_checker(int ac)
 	return (1);
 }
 
-void			check_args(int ac, t_data *data)
+void			check_args(int ac, char *name)
 {
+	int fd;
+
 	if (ac != 2)
 	{
 		ft_putstr_fd("Error: Тot enough arguments.\n", 2);
 		ft_putstr_fd("Usage: ./fdf file.fdf\n", 2);
-		fdf_free(data);
+		exit(0);
+	}
+	if (ft_strcmp(&name[ft_strlen(name) - 4], ".fdf"))
+	{
+		ft_putstr_fd("Error: Invalid file.\n", 2);
+		ft_putstr_fd("Usage: ./fdf file.fdf\n", 2);
+		exit(0);
+	}
+	if ((fd = open(name, O_RDONLY)) < 0)
+	{
+		ft_putstr_fd("Error : File doe's not exist.\n", 2);
+		close(fd);
+		exit(0);
 	}
 }
 
@@ -63,10 +79,9 @@ int				main(int ac, char **av)
 {
 	t_data *data;
 
-	data = (t_data *)malloc(sizeof(t_data));
-	if (data == NULL)
-		fdf_free(data);
-	check_args(ac, data);
+	check_args(ac, av[1]);
+	if (!(data = ((t_data *)malloc(sizeof(t_data)))))
+		ft_putstr_fd("Allocation error", 2);
 	initialize(data);
 	parsing_av(av[1], data);
 	read_av(av[1], data);

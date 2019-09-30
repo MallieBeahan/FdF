@@ -3,52 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 18:11:23 by rymuller          #+#    #+#             */
-/*   Updated: 2018/11/27 11:46:53 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/13 19:22:24 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/17 19:10:58 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	intlen(int n)
+static	int		get_len(int nbr)
 {
-	size_t	i;
+	int	count;
 
-	i = 0;
-	if (n <= 0)
-		i++;
-	while (n)
+	count = 0;
+	if (nbr < 0)
 	{
-		i++;
-		n /= 10;
+		count++;
+		nbr = nbr * -1;
 	}
-	return (i);
+	if (nbr > 0)
+	{
+		while (nbr / 10)
+		{
+			nbr = nbr / 10;
+			count++;
+		}
+	}
+	return (count);
+}
+
+static	char	*get_arr(char *str, int temp_len, int n, int flag)
+{
+	while (temp_len--)
+	{
+		str[temp_len] = n % 10 + '0';
+		n = n / 10;
+		if (flag == 1)
+			str[0] = '-';
+	}
+	return (str);
 }
 
 char			*ft_itoa(int n)
 {
-	size_t	len;
 	char	*str;
+	int		len;
+	int		temp_len;
+	int		flag;
 
+	flag = 0;
+	len = get_len(n);
+	str = (char *)malloc(sizeof(char) * (len + 2));
+	if (!str)
+		return (NULL);
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	len = intlen(n);
-	if (!(str = (char *)malloc(len + 1)))
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
+	temp_len = len + 1;
 	if (n < 0)
 	{
-		str[0] = '-';
 		n = -n;
+		flag = 1;
 	}
-	str[len] = '\0';
-	while (n)
-	{
-		str[--len] = n % 10 + '0';
-		n /= 10;
-	}
+	str = get_arr(str, temp_len, n, flag);
+	str[len + 1] = '\0';
 	return (str);
 }

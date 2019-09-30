@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/02 16:05:14 by rymuller          #+#    #+#             */
-/*   Updated: 2019/05/03 13:29:18 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/01 16:53:41 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/17 17:59:48 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
-	size_t		nbr;
-	signed char	sign;
+	long	nb;
+	int		isnegative;
+	long	check;
 
-	sign = 1;
-	while (ft_isspace(*str))
-		str++;
-	if ((*str == '+' && *(str + 1) == '-')
-			|| (*str == '-' && *(str + 1) == '+'))
-		return (0);
-	if (*str == '+')
+	nb = 0;
+	isnegative = 1;
+	while (*str == ' ' || *str == '\f' || *str == '\t'
+			|| *str == '\n' || *str == '\v' || *str == '\r')
 		str++;
 	if (*str == '-')
-	{
+		isnegative = -1;
+	if (*str == '+' || *str == '-')
 		str++;
-		sign = -1;
-	}
-	nbr = 0;
-	while (ft_isdigit(*str))
+	while (*str != '\0' && (*str >= '0' && *str <= '9'))
 	{
-		if (nbr > ATOI_MAX || (nbr == ATOI_MAX && *str - '0' > 7))
-			return ((sign == 1) ? -1 : 0);
-		nbr = nbr * 10 + (*str++ - '0');
+		check = nb;
+		nb = nb * 10 + ((*str - '0') * isnegative);
+		str++;
+		if ((check < 0) && (nb > check))
+			return (0);
+		if ((check > 0) && (nb < check))
+			return (-1);
 	}
-	return (sign * nbr);
+	return (nb);
 }

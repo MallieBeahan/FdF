@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:41:55 by rymuller          #+#    #+#             */
-/*   Updated: 2018/11/23 20:24:54 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/02 14:17:16 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/13 16:41:20 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *src, const char *to_find, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	char	*find;
+	char	*str;
+	int		j;
 
 	i = 0;
-	if (haystack[i] == needle[i] && haystack[i] == '\0')
-		return (&((char *)haystack)[i]);
-	while (haystack[i] && i < len)
+	str = (char *)src;
+	find = (char *)to_find;
+	j = ft_strlen(find);
+	if (j != 0)
 	{
-		j = 0;
-		while (i + j < len && needle[j] && haystack[i + j] &&
-				haystack[i + j] == needle[j])
-			j++;
-		if (!needle[j])
-			return (&((char *)haystack)[i]);
-		i++;
+		while (str[i] != '\0')
+		{
+			if (find[0] == str[i] && len >= (size_t)i + (size_t)j)
+			{
+				if (ft_strncmp(&str[i], find, j) == 0)
+					return (&str[i]);
+			}
+			i++;
+		}
+		return (NULL);
 	}
-	return (NULL);
+	return (str);
 }

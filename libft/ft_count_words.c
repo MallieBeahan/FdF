@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/12 13:35:49 by rymuller          #+#    #+#             */
-/*   Updated: 2019/07/13 14:40:32 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/17 19:23:55 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/17 19:27:52 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		ft_isnumber(char *str)
+int	ft_count_words(char const *s, char c)
 {
-	while (*str && !ft_isspace(*str))
+	int		i;
+	int		count;
+
+	count = 0;
+	i = 0;
+	if (s)
 	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
+		while (s[i])
+		{
+			if (s[i] == c && (s[i + 1] != c && s[i + 1] != '\0'))
+				count++;
+			i++;
+		}
+		if (s[0] != c)
+			count += 1;
+		return (count);
 	}
-	return (1);
+	return (0);
 }

@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchrnew.c                                     :+:      :+:    :+:   */
+/*   ft_free_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/01 14:34:08 by rymuller          #+#    #+#             */
-/*   Updated: 2019/05/01 14:49:30 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/17 19:27:29 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/17 19:31:05 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchrnew(size_t size, char c)
+void	ft_free_list(t_list *lst)
 {
-	size_t	i;
-	char	*str;
+	t_list	*current;
 
-	if (!(str = (char *)malloc(size + 1)))
-		return (NULL);
-	i = 0;
-	while (i <= size)
-		str[i++] = c;
-	str[i] = '\0';
-	return (str);
+	if (lst)
+	{
+		if (!lst->next)
+			free(lst);
+		if (lst->next)
+		{
+			while (lst->next)
+			{
+				current = lst->next;
+				free(lst);
+				lst = current;
+			}
+			free(current);
+		}
+	}
 }

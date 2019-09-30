@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_keys.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jjory-ca <jjory-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbeahan <mbeahan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 17:48:38 by jjory-ca          #+#    #+#             */
-/*   Updated: 2019/09/27 17:17:27 by jjory-ca         ###   ########.fr       */
+/*   Updated: 2019/09/30 18:18:08 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int			and_more(int num_button, t_data *data)
 		data->scope.x -= 1;
 		data->scope.y += 1;
 	}
+	print_menu(data);
 	return (num_button);
 }
 
@@ -44,6 +45,7 @@ static int			add_morekeys(int num_button, t_data *data)
 		else
 			data->color = WHITE;
 	}
+	print_menu(data);
 	return (1);
 }
 
@@ -71,24 +73,23 @@ int					add_keys(int num_button, t_data *data)
 	}
 	add_morekeys(num_button, data);
 	and_more(num_button, data);
-	print_menu(data);
 	vector_mark(data);
+	print_menu(data);
 	return (1);
 }
 
 void				fdf_free(t_data *data)
 {
 	int i;
-	
+
 	i = 0;
-	while(i < data->height)
+	mlx_destroy_window(data->mlx, data->window);
+	while (i < data->height)
 	{
 		free(data->matrix[i]);
-		i++;	
+		i++;
 	}
-	if (data->matrix)
-		free(data->matrix);
+	free(data->matrix);
 	free(data);
-	mlx_destroy_window(data->mlx, data->window);
 	exit(0);
 }

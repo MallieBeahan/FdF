@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstbck.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/30 15:37:54 by rymuller          #+#    #+#             */
-/*   Updated: 2019/06/30 15:37:58 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/18 16:41:40 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/18 16:42:21 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstbck(t_list **alst, t_list *new)
+void	ft_swap(int *a, int *b)
 {
-	if (alst != NULL && *alst != NULL)
-	{
-		ft_lstbck(&(*alst)->next, new);
-		if ((*alst)->next == NULL)
-			(*alst)->next = new;
-	}
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

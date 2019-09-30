@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rymuller <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbeahan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 13:43:48 by rymuller          #+#    #+#             */
-/*   Updated: 2018/11/26 13:46:21 by rymuller         ###   ########.fr       */
+/*   Created: 2018/12/04 16:01:22 by mbeahan           #+#    #+#             */
+/*   Updated: 2018/12/15 15:56:45 by mbeahan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 
 int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	if (s1 != NULL && s2 != NULL)
-		if (!ft_strncmp(s1, s2, n))
-			return (1);
-	return (0);
+	int		k;
+
+	k = 0;
+	if (!s1 || !s2)
+		return (0);
+	while ((s1[k] != '\0' || s2[k] != '\0') && (size_t)k < n)
+	{
+		if (s1[k] != s2[k])
+			return (0);
+		k++;
+	}
+	if (s1[k] != s2[k] && (size_t)k < n)
+		return (0);
+	return (1);
 }
